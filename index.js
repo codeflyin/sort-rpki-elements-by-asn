@@ -15,19 +15,17 @@ const sortRpki = (data) => {
   const final = []
 
   data.forEach(e => {
-    e.prefix = [e.prefix]
 
     if (final.filter(x => x.asn === e.asn).length > 0) {
       const k = final.findIndex(x => x.asn === e.asn)
       final[k].prefix.push(e.prefix)
-      return
     } else {
+      e.prefix = [e.prefix]
       final.push(e)
     }
-
-    return final
-
   })
+  console.log(final)
+  return final
 }
 
 getRpki()
